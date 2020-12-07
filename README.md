@@ -1,3 +1,5 @@
+<img src="https://github.com/develotechnologies/ReactNativeBoilerPlate/blob/master/src/assets/images/develoITSolutions.png"/>
+
 # ReactNativeBoilerPlate
 Follow the steps below to run the project
 
