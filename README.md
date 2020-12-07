@@ -22,4 +22,4 @@ Follow the steps below to run the project
 > npx react-native run-ios
 
 
-<em><b>Author<b/>: Shoaib Ahmed <b>[Develo Technologies Pvt Ltd.]<b/></em>
+<em><b>Author<b/>: Shoaib Ahmed <b>[Develo IT Solutions Pvt Ltd.]<b/></em>
