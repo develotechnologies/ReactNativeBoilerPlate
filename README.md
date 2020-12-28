@@ -9,6 +9,10 @@ Follow the steps below to run the project
 
 >yarn add @react-navigation/native @react-navigation/stack react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view react-redux redux redux-thunk react-native-dimension react-native-keyboard-aware-scrollview
 
+OR
+
+> yarn
+
 4. Run the project
 
 <b>Android</b>
