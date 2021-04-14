@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
-import Colors from '../../utills/Colors';
+import AppColors from '../../utills/AppColors';
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 15,
-    backgroundColor: Colors.green,
+    backgroundColor: AppColors.green,
     width: '80%',
     alignSelf: 'center',
     paddingVertical: 10,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 20,
     textShadowRadius: 0.1,
-    textShadowColor: Colors.darkGreen,
+    textShadowColor: AppColors.darkGreen,
     textShadowOffset: { width: 1.2, height: 1.2 }
   }
 });
