@@ -12,6 +12,7 @@ const ScreenWrapper = ({
   backgroundImage,
   headerUnScrollable = () => null,
   footerUnScrollable = () => null,
+  barStyle = { 'dark-content'}
 }) => {
   function FocusAwareStatusBar(props) {
     const isFocused = useIsFocused();
@@ -20,7 +21,7 @@ const ScreenWrapper = ({
   const content = () => {
     return (<View style={styles.container}>
       <FocusAwareStatusBar
-        barStyle={'dark-content'}
+        barStyle={barStyle}
         backgroundColor={statusBarColor}
         translucent={transclucent}
       />

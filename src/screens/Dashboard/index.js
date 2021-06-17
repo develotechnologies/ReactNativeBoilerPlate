@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './styles';
-import Button from '../../components/Button/Button.component';
-import {useDispatch, useSelector} from 'react-redux';
-import {logout} from '../../Redux/Actions/Auth';
+import Button from '../../components/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../Redux/Actions/Auth';
 import BGImage from '../../assets/images/bg.jpg';
 import ScreenWrapper from '../../components/ScreenWrapper';
 export default function Dashboard(props) {
