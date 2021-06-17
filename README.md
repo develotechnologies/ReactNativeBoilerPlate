@@ -28,4 +28,11 @@ OR
 > npx react-native run-ios
 
 
+<b>Added Features</b>
+    1. Redux Setup for 
+        1. Auth
+        2. Config 
+    2. Global Loader Modal Setup (Please Setup UI according to App Theme)
+    3. Bottom Alert for success, failure, warning etc. NPM Package used for Alert is <a>https://github.com/lucasferreira/react-native-flash-message#readme</a>. Read documentation for usage.
+
 <em><b>Author<b/>: Shoaib Ahmed <b>[Develo IT Solutions Pvt Ltd.]<b/></em>
