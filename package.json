@@ -6,8 +6,14 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
+    "iosrun": "yarn && cd ios && pod install && cd .. && react-native run-ios",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "assembleDebug": "npm-run-all assembleDebug:*",
+    "assembleDebug:mkdir":"cd android/app/src/main && mkdir -p assets",
+    "assembleDebug:unlink": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "assembleDebug:clean": "cd android && ./gradlew clean",
+    "assembleDebug:assemble": "cd android && ./gradlew assembleDebug"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
@@ -35,7 +41,8 @@
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
     "metro-react-native-babel-preset": "^0.59.0",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "npm-run-all": "^4.1.5"
   },
   "jest": {
     "preset": "react-native"
