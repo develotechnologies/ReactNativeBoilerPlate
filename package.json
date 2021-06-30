@@ -10,7 +10,6 @@
     "test": "jest",
     "lint": "eslint .",
     "assembleDebug": "npm-run-all assembleDebug:*",
-    "assembleDebug:mkdir":"cd android/app/src/main && mkdir -p assets",
     "assembleDebug:unlink": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "assembleDebug:clean": "cd android && ./gradlew clean",
     "assembleDebug:assemble": "cd android && ./gradlew assembleDebug"
