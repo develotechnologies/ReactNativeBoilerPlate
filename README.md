@@ -43,5 +43,24 @@ OR
    NPM Package used for Alert is <a>https://github.com/lucasferreira/react-native-flash-message#readme</a>.
        
    Read documentation for usage.
+   
+Following Scripts added 
+1. <b>yarn runios</b>
+
+   OR
+   
+    <b>npm runios</b>
+    
+   [Which is short form of yarn && cd ios && pod install && cd .. && react-native run-ios]
+
+2. <b>yarn assembleDebug</b> 
+
+    OR
+    
+    <b>npm assembleDebug</b> 
+    
+    [Which will create android bundle, clean gradlew and assembleDebug]
+    
+    Note: Make sure "assets" folder is created at "android/app/src/main"
 
 <em><b>Author<b/>: Shoaib Ahmed <b>[Develo IT Solutions Pvt Ltd.]<b/></em>
