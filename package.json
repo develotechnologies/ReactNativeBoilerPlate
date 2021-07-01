@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "iosrun": "yarn && cd ios && pod install && cd .. && react-native run-ios",
+    "runIos": "yarn && cd ios && pod install && cd .. && react-native run-ios",
     "test": "jest",
     "lint": "eslint .",
     "assembleDebug": "npm-run-all assembleDebug:*",
