@@ -5,11 +5,13 @@ import {Provider} from 'react-redux';
 import store from './Redux/index';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import {LogBox} from 'react-native';
-import NetInfo from '@react-native-community/netinfo';
+import NetInfo,{useNetInfo} from '@react-native-community/netinfo';
 import {useEffect, useRef} from 'react';
 LogBox.ignoreAllLogs(true);
+const isAppStartDependsONNetwork = true;
 export default function App() {
   const networkConnected = useRef(true);
+  const netInfo = useNetInfo();
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener((state) => {
       if (networkConnected != state.isConnected)
