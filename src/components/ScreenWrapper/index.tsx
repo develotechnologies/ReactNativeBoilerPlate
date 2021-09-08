@@ -4,6 +4,17 @@ import styles from './styles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useIsFocused } from '@react-navigation/native';
 import AppColors from '../../utills/AppColors';
+import { ReactElement } from 'hoist-non-react-statics/node_modules/@types/react';
+export interface Props {
+  children: React.ReactNode,
+  transclucent?: boolean,
+  scrollEnabled?: boolean,
+  statusBarColor?: string,
+  backgroundImage?: any,
+  headerUnScrollable?: () => void,
+  footerUnScrollable?: () => void,
+  barStyle?: string
+}
 const ScreenWrapper = ({
   children,
   statusBarColor = AppColors.green,
@@ -13,8 +24,8 @@ const ScreenWrapper = ({
   headerUnScrollable = () => null,
   footerUnScrollable = () => null,
   barStyle = 'dark-content'
-}) => {
-  function FocusAwareStatusBar(props) {
+}: Props) => {
+  function FocusAwareStatusBar(props: any) {
     const isFocused = useIsFocused();
     return isFocused ? <StatusBar {...props} /> : null;
   }
@@ -34,7 +45,6 @@ const ScreenWrapper = ({
       {scrollEnabled ? (
         <KeyboardAwareScrollView
           style={styles.container}
-          contentContainerStyle={styles.contentContainer}
           keyboardShouldPersistTaps="handled"
           showsVerticalScrollIndicator={false}>
           {children}

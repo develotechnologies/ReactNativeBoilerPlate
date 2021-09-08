@@ -8,7 +8,9 @@ import BGImage from '../../assets/images/bg.jpg';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import AppColors from '../../utills/AppColors';
 import { showMessage } from 'react-native-flash-message';
-export default function Dashboard(props) {
+export interface Props {
+}
+const Dashboard: React.FC<Props> = (props) => {
   const user = useSelector((state) => state.Auth.user);
   const dispatch = useDispatch();
   const logoutMethod = () => {
@@ -17,10 +19,10 @@ export default function Dashboard(props) {
       description: 'Succfully logged out',
       type: 'danger',
     });
-      dispatch(logout());
+    dispatch(logout());
   };
   return (
-    <ScreenWrapper backgroundImage={BGImage} statusBarColor = {AppColors.transparent} barStyle = "light-content">
+    <ScreenWrapper backgroundImage={BGImage} statusBarColor={AppColors.transparent} barStyle="light-content">
       <View style={styles.mainViewContainer}>
         <Text style={styles.text}>Dashboard</Text>
         <Text style={styles.text}>{user.userName}</Text>
@@ -29,3 +31,4 @@ export default function Dashboard(props) {
     </ScreenWrapper>
   );
 }
+export default Dashboard

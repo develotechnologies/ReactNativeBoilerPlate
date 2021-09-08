@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { height } from 'react-native-dimension'
-import AppColors from '../../utills/AppColors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
