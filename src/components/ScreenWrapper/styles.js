@@ -5,9 +5,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  scroll: {
+  mainViewContainer: {
     flex: 1,
-    paddingBottom: height(1.5),
-  }
+  },
+  contentContainer: {
+    paddingVertical: height(2)
+  },
 });
 export default styles;

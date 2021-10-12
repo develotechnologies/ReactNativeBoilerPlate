@@ -4,14 +4,17 @@ import styles from './styles';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useIsFocused } from '@react-navigation/native';
 import AppColors from '../../utills/AppColors';
-const ScreenWrapper = ({
+export const ScreenWrapper = ({
   children,
-  statusBarColor = AppColors.green,
+  statusBarColor = AppColors.white,
   transclucent = false,
   scrollEnabled = false,
   backgroundImage,
+  containerViewStyle = {},
+  contentContainerStyle = {},
   headerUnScrollable = () => null,
   footerUnScrollable = () => null,
+  backgroundColor = AppColors.white,
   barStyle = 'dark-content'
 }) => {
   function FocusAwareStatusBar(props) {
@@ -19,7 +22,27 @@ const ScreenWrapper = ({
     return isFocused ? <StatusBar {...props} /> : null;
   }
   const content = () => {
-    return (<View style={styles.container}>
+    return (<>
+      {headerUnScrollable()}
+      <View style={[styles.mainViewContainer, containerViewStyle, { backgroundColor: transclucent ? AppColors.transparent : backgroundColor }]}>
+        {scrollEnabled ? (
+          <KeyboardAwareScrollView
+            contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
+            keyboardShouldPersistTaps="handled"
+            extraScrollHeight={height(8)}
+            showsVerticalScrollIndicator={false}>
+            {children}
+          </KeyboardAwareScrollView>
+        ) : (
+          children
+        )}
+      </View>
+      {footerUnScrollable()}
+    </>
+    )
+  }
+  return (
+    <Fragment>
       <FocusAwareStatusBar
         barStyle={barStyle}
         backgroundColor={statusBarColor}
@@ -30,28 +53,11 @@ const ScreenWrapper = ({
           style={(styles.container, { backgroundColor: statusBarColor })}
         />
       )}
-      {headerUnScrollable()}
-      {scrollEnabled ? (
-        <KeyboardAwareScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}>
-          {children}
-        </KeyboardAwareScrollView>
-      ) : (
-        children
-      )}
-      {footerUnScrollable()}
-    </View>)
-  }
-  return (
-    backgroundImage ? <ImageBackground source={backgroundImage} style={styles.container} resizeMode={'cover'}>
-      {content()}
-    </ImageBackground>
-      :
-      content()
+      {backgroundImage ? <ImageBackground source={backgroundImage} style={styles.container} resizeMode={'cover'}>
+        {content()}
+      </ImageBackground>
+        :
+        content()}
+    </Fragment>
   );
 };
-
-export default ScreenWrapper;
