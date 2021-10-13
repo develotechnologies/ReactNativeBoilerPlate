@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../Redux/Actions/Auth';
 import BGImage from '../../assets/images/bg.jpg';
-import ScreenWrapper from '../../components/ScreenWrapper';
+import { ScreenWrapper } from '../../components/ScreenWrapper';
 import AppColors from '../../utills/AppColors';
 import { showMessage } from 'react-native-flash-message';
 export default function Dashboard(props) {
@@ -17,10 +17,10 @@ export default function Dashboard(props) {
       description: 'Succfully logged out',
       type: 'danger',
     });
-      dispatch(logout());
+    dispatch(logout());
   };
   return (
-    <ScreenWrapper backgroundImage={BGImage} statusBarColor = {AppColors.transparent} barStyle = "light-content">
+    <ScreenWrapper backgroundImage={BGImage} transclucent statusBarColor={AppColors.transparent} barStyle="light-content">
       <View style={styles.mainViewContainer}>
         <Text style={styles.text}>Dashboard</Text>
         <Text style={styles.text}>{user.userName}</Text>

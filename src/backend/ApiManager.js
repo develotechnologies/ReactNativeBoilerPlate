@@ -1,10 +1,16 @@
 import axios from 'axios';
-import { showMessage } from 'react-native-flash-message';
 import { BaseUrl } from './Config';
 axios.defaults.baseURL = BaseUrl;
-
+axios.interceptors.response.use(function (response) {
+    console.log(response)
+    return response;
+}, function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    return Promise.reject(error);
+});
 export const ApiManager = {
-    getData: async (endpoint, params = {}, showErrorAlert = true) => {
+    getData: async (endpoint, params = {}) => {
         let res;
         try {
             res = await axios.get(endpoint, { params });
@@ -12,11 +18,10 @@ export const ApiManager = {
                 return { ok: true, data: res.data };
             } else return { ok: false, data: [] };
         } catch (error) {
-            // if (showErrorAlert) showAlert(true, error.message)
             return { ok: false, error: error.response.data };
         }
     },
-    postData: async (endpoint, data, params = {}, showErrorAlert = true) => {
+    postData: async (endpoint, data, params = {}) => {
         let res;
         try {
             res = fetch(BaseUrl + endpoint, JSON.stringify(data));
@@ -25,24 +30,10 @@ export const ApiManager = {
                 return { ok: true, data: res.data };
             } else return { ok: false, data: null };
         } catch (error) {
-            if (showErrorAlert) {
-                if (error.response.status == 400)
-                    showMessage({
-                        message: "Error",
-                        description: "Invalid Parameters!",
-                        type: "danger",
-                    })
-                else
-                    showMessage({
-                        message: "Error",
-                        description: "Something went wrong!",
-                        type: "danger",
-                    })
-            }
             return { ok: false, error: error.response.data };
         }
     },
-    putData: async (endpoint, data, params = {}, showErrorAlert = true) => {
+    putData: async (endpoint, data, params = {}) => {
         let res;
         try {
             res = await axios.put(endpoint, data, { params });
@@ -50,11 +41,10 @@ export const ApiManager = {
                 return { ok: true, data: res.data };
             } else return { ok: false, data: [] };
         } catch (error) {
-            // if (showErrorAlert) showAlert(true, error.message)
             return { ok: false, error: error.response.data };
         }
     },
-    patchData: async (endpoint, data, params = {}, showErrorAlert = true) => {
+    patchData: async (endpoint, data, params = {}) => {
         let res;
         try {
             res = await axios.patch(endpoint, data, { params });
@@ -62,11 +52,10 @@ export const ApiManager = {
                 return { ok: true, data: res.data };
             } else return { ok: false, data: [] };
         } catch (error) {
-            // if (showErrorAlert) showAlert(true, error.message)
             return { ok: false, error: error.response.data };
         }
     },
-    deleteData: async (endpoint, params, showErrorAlert = true) => {
+    deleteData: async (endpoint, params) => {
         let res;
         try {
             res = await axios.delete(endpoint, { params });
@@ -74,7 +63,6 @@ export const ApiManager = {
                 return { ok: true, data: res.data };
             } else return { ok: false, data: [] };
         } catch (error) {
-            // if (showErrorAlert) showAlert(true, error.message)
             return { ok: false, error: error.response.data };
         }
     },
