@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BaseUrl } from './Config';
-// axios.defaults.baseURL = BaseUrl;
+axios.defaults.baseURL = BaseUrl;
 axios.interceptors.response.use(function (response) {
     return { ok: true, data: response?.data };
 }, function (error) {
@@ -23,3 +23,12 @@ export const ApiManager = {
         return axios.delete(endpoint, { params });
     },
 };
+
+
+/**
+ *  const response = await ApiManager.getData(`/movies.json`) // Final url will be BaseURL + "/movies.json" due to default base url
+ *  if (response?.ok)
+ *    console.log(response.data);
+ *  else
+ *    console.log("Error", response.error)
+ */

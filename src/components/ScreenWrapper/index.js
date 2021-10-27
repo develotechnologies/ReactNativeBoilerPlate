@@ -17,6 +17,8 @@ export const ScreenWrapper = ({
   backgroundColor = AppColors.white,
   barStyle = 'dark-content'
 }) => {
+  if (backgroundImage)
+    backgroundColor = AppColors.transparent
   function FocusAwareStatusBar(props) {
     const isFocused = useIsFocused();
     return isFocused ? <StatusBar {...props} /> : null;
@@ -36,8 +38,8 @@ export const ScreenWrapper = ({
         ) : (
           children
         )}
+        {footerUnScrollable()}
       </View>
-      {footerUnScrollable()}
     </>
     )
   }
@@ -49,9 +51,7 @@ export const ScreenWrapper = ({
         translucent={transclucent}
       />
       {!transclucent && (
-        <SafeAreaView
-          style={(styles.container, { backgroundColor: statusBarColor })}
-        />
+        <SafeAreaView style={{ backgroundColor: statusBarColor }} />
       )}
       {backgroundImage ? <ImageBackground source={backgroundImage} style={styles.container} resizeMode={'cover'}>
         {content()}
