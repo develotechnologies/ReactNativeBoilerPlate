@@ -7,25 +7,26 @@ axios.interceptors.response.use(function (response) {
     return { ok: false, error: error?.response?.data }
 });
 export const ApiManager = {
-    getData: async (endpoint, params = {}) => {
+    get: async (endpoint, params = {}) => {
         return axios.get(endpoint, { params });
     },
-    postData: async (endpoint, data, params = {}) => {
-        return axios.post(endpoint, data, { params });
+    post: async (endpoint, body, params = {}) => {
+        return axios.post(endpoint, body, { params });
     },
-    putData: async (endpoint, data, params = {}) => {
-        return axios.put(endpoint, data, { params });
+    put: async (endpoint, body, params = {}) => {
+        return axios.put(endpoint, body, { params });
     },
-    patchData: async (endpoint, data, params = {}) => {
-        return axios.patch(endpoint, data, { params });
+    patch: async (endpoint, body, params = {}) => {
+        return axios.patch(endpoint, body, { params });
     },
-    deleteData: async (endpoint, params) => {
+    delete: async (endpoint, params) => {
         return axios.delete(endpoint, { params });
     },
 };
 
 
 /**
+ * EXAMPLE USAGE
  *  const response = await ApiManager.getData(`/movies.json`) // Final url will be BaseURL + "/movies.json" due to default base url
  *  if (response?.ok)
  *    console.log(response.data);
