@@ -9,11 +9,11 @@ Follow the steps below to run the project
 2.  Open terminal in project's root directory.
 3.  Run the command 
 
->yarn add @react-navigation/native @react-navigation/stack react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view react-redux redux redux-thunk react-native-dimension react-native-keyboard-aware-scrollview
+        yarn add @react-navigation/native@^5.x @react-navigation/stack@^5.x react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view react-redux redux redux-thunk react-native-dimension react-native-keyboard-aware-scrollview
 
-OR
+       OR
 
-> yarn
+    yarn
 
 4. Run the project
 
@@ -46,23 +46,36 @@ OR
        
    Read documentation for usage.
    
-Following Scripts added 
-1. <b>yarn runios</b>
+<b>Following Scripts added </b>
+
+1. Run Ios
+
+    yarn runios
 
    OR
    
-    <b>npm runios</b>
+    npm runios
     
-   [Which is short form of yarn && cd ios && pod install && cd .. && react-native run-ios]
+  This command runs following commands behind the scene
+   
+    yarn && cd ios && pod install && cd .. && react-native run-ios
 
-2. <b>yarn assembleDebug</b> 
+
+2. Create Debug APK
+
+
+        yarn assembleDebug
 
     OR
     
-    <b>npm assembleDebug</b> 
+        npm assembleDebug
     
-    [Which will create android bundle, clean gradlew and assembleDebug]
-    
+    This command runs following commands behind the scene    
+
+        react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res    
+        cd android && ./gradlew clean
+        cd android && ./gradlew assembleDebug
+
     Note: Make sure "assets" folder is created at "android/app/src/main"
 
 <em><b>Author<b/>: Shoaib Ahmed <b>[Develo IT Solutions Pvt Ltd.]<b/></em>
