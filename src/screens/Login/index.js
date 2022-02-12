@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import styles from './styles';
-import Button from '../../components/Button';
-import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../Redux/Actions/Auth';
-import { ScreenWrapper } from '../../components/ScreenWrapper';
-import AppColors from '../../utills/AppColors';
+import { Text, View } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
+import { ScreenWrapper } from 'react-native-screen-wrapper';
+import { useDispatch, useSelector } from 'react-redux';
+import Button from '../../components/Button';
+import { login } from '../../Redux/Actions/Auth';
 import { setLoaderVisible } from '../../Redux/Actions/Config';
+import AppColors from '../../utills/AppColors';
+import styles from './styles';
 export default function Dashboard(props) {
   const user = useSelector((state) => state.Auth.user);
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function Dashboard(props) {
     }, 1500);
   };
   return (
-    <ScreenWrapper statusBarColor={AppColors.white}>
+    <ScreenWrapper statusBarColor={AppColors.white} barStyle='dark-content'>
       <View style={styles.mainViewContainer}>
         <Text> Login</Text>
         <Button title="Login" onPress={loginMethod} />

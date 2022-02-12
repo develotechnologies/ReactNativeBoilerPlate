@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import AppColors from '../../utills/AppColors';
 
 const styles = StyleSheet.create({
@@ -7,8 +7,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  text:{
-    color: AppColors.white
+  text: {
+    color: AppColors.green
   }
 });
 export default styles;
